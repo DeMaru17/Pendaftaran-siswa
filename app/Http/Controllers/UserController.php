@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::with('level')->get();
+        $users = User::with('level')->whereNull('deleted_at')->get();
         $title = 'Delete Data!';
         $text = "Are you sure you want to delete?";
         confirmDelete($title, $text);
@@ -116,8 +116,9 @@ class UserController extends Controller
     public function softdelete(string $id)
     {
         $users = User::findOrFail($id);
-        $users->delete();
-
+        $users->deleted_at = now(); // Set the deleted_at timestamp to the current time
+        $users->save(); // Save the changes
+        Alert::success('Success','Data berhasil dihapus sementara');
         return redirect()->route('user.index')->with('success', 'Data Berhasil Dihapus sementara');
     }
 }

@@ -9,6 +9,7 @@
         <table class="table table-striped table-bordered">
           <thead>
             <tr>
+              <th>No</th>
               <th>Nama Level</th>
               <th>Nama Lengkap</th>
               <th>Email</th>
@@ -18,6 +19,7 @@
           <tbody>
             @foreach($users as $user)
             <tr>
+              <th>{{$loop->iteration}}</th>
               <td>{{ $user->level->nama_level }}</td>
               <td>{{ $user->nama_lengkap }}</td>
               <td>{{ $user->email }}</td>

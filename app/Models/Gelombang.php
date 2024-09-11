@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Level extends Model
+class Gelombang extends Model
 {
     use HasFactory;
+    protected $table = 'gelombang';
     protected $fillable = [
-        'nama_level'
+        'nama_gelombang',
+        "aktif"
     ];
     protected $date = ['deleted_at'];
 }

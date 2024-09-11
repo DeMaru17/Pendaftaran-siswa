@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Create User')
+@section('title', 'Tambah User')
 @section('content')
 
   <div class="card">
@@ -28,7 +28,7 @@
             <input type="password" class="form-control" id="password" name="password" required>
           </div>
         <a href="{{route('user.index')}}" class="btn btn-danger">Kembali</a>
-        <button type="submit" class="btn btn-primary">Tambah User</button>
+        <button type="submit" class="btn btn-primary">Tambah Data</button>
       </form>
     </div>
   </div>

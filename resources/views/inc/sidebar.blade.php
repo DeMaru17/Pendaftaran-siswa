@@ -5,7 +5,7 @@
 <div class="sidebar-header position-relative">
     <div class="d-flex justify-content-between align-items-center">
         <div class="logo">
-            <a href="index.html"><img src="{{asset('dist/assets/compiled/svg/logo.svg')}}" alt="Logo" srcset=""></a>
+            <a href="{{route('dashboard')}}"><img style="width: 130px; height:auto;" class="image-fluid" src="{{asset('img/file.png')}}" alt="Logo" srcset=""></a>
         </div>
         <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
@@ -69,17 +69,17 @@
                 </li>
 
                 <li class="submenu-item  ">
-                    <a href="component-alert.html" class="submenu-link">Alert</a>
+                    <a href="{{route('level.index')}}" class="submenu-link">Level</a>
 
                 </li>
 
                 <li class="submenu-item  ">
-                    <a href="component-badge.html" class="submenu-link">Badge</a>
+                    <a href="{{route('jurusan.index')}}" class="submenu-link">Jurusan</a>
 
                 </li>
 
                 <li class="submenu-item  ">
-                    <a href="component-breadcrumb.html" class="submenu-link">Breadcrumb</a>
+                    <a href="{{route('gelombang.index')}}" class="submenu-link">Gelombang</a>
 
                 </li>
 

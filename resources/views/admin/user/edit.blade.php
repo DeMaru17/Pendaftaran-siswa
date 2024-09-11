@@ -36,7 +36,7 @@
             <input type="password" class="form-control" id="new_password" name="new_password">
         </div>
         <a href="{{route('user.index')}}" class="btn btn-danger">Kembali</a>
-        <button type="submit" class="btn btn-primary">Update User</button>
+        <button type="submit" class="btn btn-primary">Update Data</button>
       </form>
     </div>
   </div>

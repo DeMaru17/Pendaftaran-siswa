@@ -14,4 +14,8 @@ Route::get('login', [\App\Http\Controllers\LoginController::class, 'index'])->na
 Route::post('action-login', [\App\Http\Controllers\LoginController::class, 'actionLogin'])->name('action-login');
 
 Route::resource('user', \App\Http\Controllers\UserController::class);
-route::delete('admin/user/softdelete/{id}', [UserController::class, 'softDeletes'])->name('user.softDelete');
+Route::delete('admin/user/softdelete/{id}', [UserController::class, 'softdelete'])->name('user.softDelete');
+
+Route::resource('level', \App\Http\Controllers\LevelController::class);
+Route::resource('jurusan', \App\Http\Controllers\JurusanController::class);
+Route::resource('gelombang', \App\Http\Controllers\GelombangController::class);
