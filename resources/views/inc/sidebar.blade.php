@@ -46,7 +46,7 @@
 
         <li
             class="sidebar-item active ">
-            <a href="index.html" class='sidebar-link'>
+            <a href="{{route('dashboard')}}" class='sidebar-link'>
                 <i class="bi bi-grid-fill"></i>
                 <span>Dashboard</span>
             </a>
@@ -58,13 +58,13 @@
             class="sidebar-item  has-sub">
             <a href="#" class='sidebar-link'>
                 <i class="bi bi-stack"></i>
-                <span>Components</span>
+                <span>Master Data</span>
             </a>
 
             <ul class="submenu ">
 
                 <li class="submenu-item  ">
-                    <a href="component-accordion.html" class="submenu-link">Accordion</a>
+                    <a href="{{route('user.index')}}" class="submenu-link">User</a>
 
                 </li>
 
@@ -236,7 +236,7 @@
 
         </li>
 
-        
+
 </div>
 </div>
     </div>

@@ -23,6 +23,8 @@ class User extends Authenticatable
         'password',
     ];
 
+    protected $date = ['deleted_at'];
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -44,5 +46,11 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    // In your User model
+    public function level()
+    {
+    return $this->belongsTo(Level::class, 'id_level', 'id');
     }
 }
