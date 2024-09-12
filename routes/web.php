@@ -8,6 +8,7 @@ Route::get('/', function () {
 });
 
 Route::get('dashboard', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+Route::resource('pendaftaran',  \App\Http\Controllers\RegisterController::class);
 
 // Login routes
 Route::get('login', [\App\Http\Controllers\LoginController::class, 'index'])->name('login');

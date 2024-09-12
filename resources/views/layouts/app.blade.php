@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>PPKD Jakarta Pusat-@yield('title')</title>
 
 
 
@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="{{asset('dist/assets/compiled/css/app.css')}}">
   <link rel="stylesheet" href="{{asset('dist/assets/compiled/css/app-dark.css')}}">
   <link rel="stylesheet" href="{{asset('dist/assets/compiled/css/iconly.css')}}">
+  <link rel="stylesheet" href="{{asset('dist/assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css')}}">
+  <link rel="stylesheet" href="{{asset('dist/assets/compiled/css/table-datatable-jquery.css')}}">
 </head>
 
 <body>
@@ -55,6 +57,10 @@
 <!-- Need: Apexcharts -->
 <script src="{{asset('dist/assets/extensions/apexcharts/apexcharts.min.js')}}"></script>
 <script src="{{asset('dist/assets/static/js/pages/dashboard.js')}}"></script>
+<script src="{{asset('dist/assets/extensions/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('dist/assets/extensions/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('dist/assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js')}}"></script>
+<script src="{{asset('dist/assets/static/js/pages/datatables.js')}}"></script>
 
 </body>
 

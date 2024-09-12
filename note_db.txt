@@ -19,6 +19,8 @@ db peserta pelatihan
 id_jurusan
 id_gelombang
 nama_lengkap
+email
+nomor_hp
 nik
 kartu_keluarga
 jenis_kelamin
@@ -27,8 +29,6 @@ tanggal_lahir
 pendidikan_terakhir
 nama_sekolah
 kejuruan
-nomor_hp
-email
 aktivitas_saat_ini
 status
 created_at
@@ -45,6 +45,15 @@ deleted_at
 db gelombang
 id
 nama_gelombang
+created_at
+updated_at
+deleted_at
+
+db pic_jurusan
+id
+id_jurusan (foreign key referencing the id column in the jurusan table)
+id_user (foreign key referencing the id column in the users table)
+id_level (foreign key referencing the id column in the levels table)
 created_at
 updated_at
 deleted_at
