@@ -16,6 +16,7 @@
                                 <th>Nama Lengkap</th>
                                 <th>Jurusan</th>
                                 <th>Gelombang</th>
+                                <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -26,6 +27,15 @@
                                     <td>{{$p->nama_lengkap }}</td>
                                     <td>{{$p->jurusan->nama_jurusan}}</td>
                                     <td>{{$p->gelombang->nama_gelombang}}</td>
+                                    <td>
+                                        @if ($p->status == 0)
+                                            Belum Ditentukan
+                                        @elseif ($p->status == 1)
+                                            Lolos
+                                        @else
+                                            Tidak Lolos
+                                        @endif
+                                    </td>
                                     <td>
                                         <a href="{{route('pendaftaran.show',$p->id)}}" class="btn btn-primary btn-sm">Detail</a>
                                     </td>

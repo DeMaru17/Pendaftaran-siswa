@@ -15,7 +15,7 @@ class RegisterController extends Controller
      */
     public function index()
     {
-        $peserta = Register::with('gelombang', 'jurusan')->get();
+        $peserta = Register::with('gelombang', 'jurusan')->orderBy('id', 'desc')->get();
         return view('admin.peserta.index', compact('peserta'));
     }
 
@@ -83,7 +83,11 @@ class RegisterController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id) {}
+    public function show(string $id)
+    {
+        $peserta = Register::with('gelombang', 'jurusan')->findOrFail($id);
+        return view('admin.peserta.detail', compact('peserta'));
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -98,7 +102,14 @@ class RegisterController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $register =  Register::findOrFail($id);
+        $request->validate([
+            'status' => 'integer|required'
+        ]);
+        $register->status = $request->status;
+        $register->save();
+        Alert::success('Success', 'Status Peserta Berhasil Diupdate');
+        return redirect()->route('pendaftaran.index');
     }
 
     /**
