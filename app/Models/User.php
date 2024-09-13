@@ -48,9 +48,22 @@ class User extends Authenticatable
         ];
     }
 
-    // In your User model
     public function level()
     {
-    return $this->belongsTo(Level::class, 'id_level', 'id');
+        return $this->belongsTo(Level::class, 'id_level', 'id');
+    }
+
+
+
+    public function jurusans()
+    {
+        return $this->hasManyThrough(
+            Jurusan::class,        // Model tujuan (Jurusan)
+            UserJurusan::class,    // Model perantara (UserJurusan)
+            'id_level',            // Foreign key pada UserJurusan yang mereferensi tabel levels
+            'id',                  // Foreign key pada Jurusan yang mereferensi UserJurusan
+            'id_level',            // Local key pada users
+            'id_jurusan'           // Foreign key pada UserJurusan yang mereferensi tabel jurusan
+        );
     }
 }

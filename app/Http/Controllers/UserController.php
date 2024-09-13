@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Level;
+use App\Models\Jurusan;
+use App\Models\UserJurusan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -15,10 +17,14 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::with('level')->whereNull('deleted_at')->get();
+        $users = User::with('jurusans')->get();
+        // dump($users);
+
         $title = 'Delete Data!';
         $text = "Are you sure you want to delete?";
         confirmDelete($title, $text);
+
+        // dd($users);
         return view('admin.user.index', compact('users'));
     }
 
@@ -63,7 +69,8 @@ class UserController extends Controller
         // $edit = User::find($id);
         $users = User::findOrFail($id);
         $levels = Level::get();
-        return view('admin.user.edit', compact('users', 'levels'));
+        $jurusans = Jurusan::get();
+        return view('admin.user.edit', compact('users', 'levels', 'jurusans'));
     }
 
     /**
@@ -88,6 +95,8 @@ class UserController extends Controller
             }
         }
 
+
+
         // Update the user data
         $user->id_level = $request->id_level;
         $user->nama_lengkap = $request->nama_lengkap;
@@ -96,10 +105,17 @@ class UserController extends Controller
         if ($request->filled('new_password')) {
             $user->password = Hash::make($request->new_password);
         }
-
-
         // Save the changes
         $user->save();
+
+        if ($request->input('id_level') == 7) {
+            UserJurusan::create([
+                'id_level' => $request->id_level,
+                'id_jurusan' => $request->id_jurusan,
+            ]);
+        }
+
+
         Alert::success('Success', 'Data Berhasil Diupdate');
         // Redirect back with a success message
         return redirect()->route('user.index')->with('success', 'User updated successfully');
@@ -118,7 +134,7 @@ class UserController extends Controller
         $users = User::findOrFail($id);
         $users->deleted_at = now(); // Set the deleted_at timestamp to the current time
         $users->save(); // Save the changes
-        Alert::success('Success','Data berhasil dihapus sementara');
+        Alert::success('Success', 'Data berhasil dihapus sementara');
         return redirect()->route('user.index')->with('success', 'Data Berhasil Dihapus sementara');
     }
 }

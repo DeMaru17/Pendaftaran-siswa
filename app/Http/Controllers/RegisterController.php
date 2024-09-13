@@ -109,7 +109,7 @@ class RegisterController extends Controller
         $register->status = $request->status;
         $register->save();
         Alert::success('Success', 'Status Peserta Berhasil Diupdate');
-        return redirect()->route('pendaftaran.index');
+        return redirect()->route('data-peserta.index');
     }
 
     /**

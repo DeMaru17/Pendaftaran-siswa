@@ -2,13 +2,17 @@
 
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Jurusan;
 
 Route::get('/', function () {
-    return view('welcome');
+    $jurusan = Jurusan::whereNull('deleted_at')->get();
+    return view('dashboard', compact('jurusan'));
 });
 
+// user
 Route::get('dashboard', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
-Route::resource('pendaftaran',  \App\Http\Controllers\RegisterController::class);
+Route::get('pendaftaran',  [\App\Http\Controllers\RegisterController::class, 'create'])->name('pendaftaran.create');
+Route::post('pendaftaran', [\App\Http\Controllers\RegisterController::class, 'store'])->name('pendaftaran.store');
 
 // Login routes
 Route::get('login', [\App\Http\Controllers\LoginController::class, 'index'])->name('login');
@@ -20,3 +24,5 @@ Route::delete('admin/user/softdelete/{id}', [UserController::class, 'softdelete'
 Route::resource('level', \App\Http\Controllers\LevelController::class);
 Route::resource('jurusan', \App\Http\Controllers\JurusanController::class);
 Route::resource('gelombang', \App\Http\Controllers\GelombangController::class);
+Route::resource('data-peserta', \App\Http\Controllers\RegisterController::class);
+

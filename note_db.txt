@@ -15,6 +15,14 @@ created_at
 updated_at
 deleted_at
 
+db user_jurusan
+id
+id_jurusan (foreign key referencing the id column in the jurusan table)
+id_level (foreign key referencing the id column in the levels table)
+created_at
+updated_at
+deleted_at
+
 db peserta pelatihan
 id_jurusan
 id_gelombang
@@ -30,7 +38,7 @@ pendidikan_terakhir
 nama_sekolah
 kejuruan
 aktivitas_saat_ini
-status
+status (lolos admininistrasi (admin aplikasi), lolos wawancara (instruktur), dinyatakan lolos (PIC), tidak lolos)
 created_at
 updated_at
 deleted_at
@@ -49,12 +57,5 @@ created_at
 updated_at
 deleted_at
 
-db pic_jurusan
-id
-id_jurusan (foreign key referencing the id column in the jurusan table)
-id_user (foreign key referencing the id column in the users table)
-id_level (foreign key referencing the id column in the levels table)
-created_at
-updated_at
-deleted_at
+
 

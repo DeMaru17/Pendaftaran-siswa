@@ -13,4 +13,15 @@ class Jurusan extends Model
         'nama_jurusan'
     ];
     protected $date = ['deleted_at'];
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'user_jurusan', 'id_jurusan', 'id_level');
+    }
+
+     // Relasi ke tabel user_jurusan
+     public function userJurusan()
+     {
+         return $this->hasMany(UserJurusan::class, 'id_jurusan', 'id');
+     }
 }

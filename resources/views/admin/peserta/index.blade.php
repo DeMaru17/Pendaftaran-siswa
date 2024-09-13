@@ -3,7 +3,7 @@
 @section('content')
 
 
-    
+
         <div class="card">
             <div class="card-header">
             </div>
@@ -29,15 +29,15 @@
                                     <td>{{$p->gelombang->nama_gelombang}}</td>
                                     <td>
                                         @if ($p->status == 0)
-                                            Belum Ditentukan
+                                            Belum Diverifikasi
+                                        @elseif ($p->status == 2)
+                                            Lolos Administrasi
                                         @elseif ($p->status == 1)
-                                            Lolos
-                                        @else
                                             Tidak Lolos
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{route('pendaftaran.show',$p->id)}}" class="btn btn-primary btn-sm">Detail</a>
+                                        <a href="{{route('data-peserta.show',$p->id)}}" class="btn btn-primary btn-sm">Detail</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -46,6 +46,6 @@
                 </div>
             </div>
         </div>
-    
-        
+
+
 @endsection

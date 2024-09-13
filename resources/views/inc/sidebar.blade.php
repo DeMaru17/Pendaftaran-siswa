@@ -55,6 +55,16 @@
         </li>
 
         <li
+            class="sidebar-item {{ Route::currentRouteName() == 'data-peserta.index' ? 'active' : '' }} ">
+            <a href="{{route('data-peserta.index')}}" class="sidebar-link ">
+                <i class="bi bi-grid-1x2-fill"></i>
+                <span>Data Peserta</span>
+            </a>
+
+
+        </li>
+
+        <li
             class="sidebar-item has-sub {{ in_array(Route::currentRouteName(), ['user.index', 'level.index', 'jurusan.index', 'gelombang.index']) ? 'active' : '' }}  ">
             <a href="#" class='sidebar-link'>
                 <i class="bi bi-stack"></i>
@@ -90,98 +100,9 @@
 
         </li>
 
-        <li
-            class="sidebar-item {{ Route::currentRouteName() == 'pendaftaran.index' ? 'active' : '' }} ">
-            <a href="{{route('pendaftaran.index')}}" class="sidebar-link ">
-                <i class="bi bi-grid-1x2-fill"></i>
-                <span>Data Peserta</span>
-            </a>
 
 
-        </li>
 
-        <li
-            class="sidebar-item  has-sub">
-            <a href="#" class='sidebar-link'>
-                <i class="bi bi-collection-fill"></i>
-                <span>Peserta Pelatihan</span>
-            </a>
-
-            <ul class="submenu ">
-
-                <li class="submenu-item  ">
-                    <a href="extra-component-avatar.html" class="submenu-link">Avatar</a>
-
-                </li>
-
-                <li class="submenu-item  ">
-                    <a href="extra-component-divider.html" class="submenu-link">Divider</a>
-
-                </li>
-
-                <li class="submenu-item  ">
-                    <a href="extra-component-date-picker.html" class="submenu-link">Date Picker</a>
-
-                </li>
-
-                <li class="submenu-item  ">
-                    <a href="extra-component-sweetalert.html" class="submenu-link">Sweet Alert</a>
-
-                </li>
-
-                <li class="submenu-item  ">
-                    <a href="extra-component-toastify.html" class="submenu-link">Toastify</a>
-
-                </li>
-
-                <li class="submenu-item  ">
-                    <a href="extra-component-rating.html" class="submenu-link">Rating</a>
-
-                </li>
-
-            </ul>
-
-
-        </li>
-
-        <li
-            class="sidebar-item  has-sub">
-            <a href="#" class='sidebar-link'>
-                <i class="bi bi-grid-1x2-fill"></i>
-                <span>Layouts</span>
-            </a>
-
-            <ul class="submenu ">
-
-                <li class="submenu-item  ">
-                    <a href="layout-default.html" class="submenu-link">Default Layout</a>
-
-                </li>
-
-                <li class="submenu-item  ">
-                    <a href="layout-vertical-1-column.html" class="submenu-link">1 Column</a>
-
-                </li>
-
-                <li class="submenu-item  ">
-                    <a href="layout-vertical-navbar.html" class="submenu-link">Vertical Navbar</a>
-
-                </li>
-
-                <li class="submenu-item  ">
-                    <a href="layout-rtl.html" class="submenu-link">RTL Layout</a>
-
-                </li>
-
-                <li class="submenu-item  ">
-                    <a href="layout-horizontal.html" class="submenu-link">Horizontal Menu</a>
-
-                </li>
-
-            </ul>
-
-
-        </li>
 
 
 </div>

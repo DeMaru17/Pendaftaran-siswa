@@ -19,6 +19,17 @@
             @endforeach
           </select>
         </div>
+        @if($users->id_level == 7)
+        <div class="form-group">
+          <label for="jurusan">Jurusan</label>
+          <select class="form-control" name="id_jurusan" id="">
+            <option value="">Pilih Jurusan</option>
+            @foreach ($jurusans as $jurusan)
+              <option value="{{ $jurusan->id }}">{{ $jurusan->nama_jurusan }}</option>
+            @endforeach
+          </select>
+        </div>
+      @endif
         <div class="form-group">
           <label for="nama_lengkap">Nama Lengkap</label>
           <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" value="{{$users->nama_lengkap}}" required>
