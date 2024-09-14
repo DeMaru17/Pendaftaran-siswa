@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::with('jurusans')->get();
+        $users = User::with('jurusans')->whereNull('deleted_at')->get();
         // dump($users);
 
         $title = 'Delete Data!';
@@ -68,8 +68,8 @@ class UserController extends Controller
     {
         // $edit = User::find($id);
         $users = User::findOrFail($id);
-        $levels = Level::get();
-        $jurusans = Jurusan::get();
+        $levels = Level::whereNull('deleted_at')->get();
+        $jurusans = Jurusan::whereNull('deleted_at')->get();
         return view('admin.user.edit', compact('users', 'levels', 'jurusans'));
     }
 
@@ -108,12 +108,8 @@ class UserController extends Controller
         // Save the changes
         $user->save();
 
-        if ($request->input('id_level') == 7) {
-            UserJurusan::create([
-                'id_level' => $request->id_level,
-                'id_jurusan' => $request->id_jurusan,
-            ]);
-        }
+       
+
 
 
         Alert::success('Success', 'Data Berhasil Diupdate');

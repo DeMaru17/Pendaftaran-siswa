@@ -29,6 +29,7 @@
             </td>
               <td>{{ $user->email }}</td>
               <td class="d-flex align-items-center">
+
                 <a href="{{ route('user.edit', $user->id) }}" class="btn btn-primary btn-sm mx-2 ">Edit</a>
                 <a href="{{ route('user.softDelete', $user->id) }}" class="btn btn-danger btn-sm" data-confirm-delete="true">Delete</a>
               </td>

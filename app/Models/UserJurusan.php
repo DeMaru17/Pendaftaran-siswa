@@ -12,9 +12,15 @@ class UserJurusan extends Model
     protected $table = 'user_jurusan';
 
     protected $fillable = [
+        'id_user',
         'id_jurusan',
         'id_level'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user', 'id');
+    }
 
     // Relasi ke tabel Jurusan
     public function jurusan()

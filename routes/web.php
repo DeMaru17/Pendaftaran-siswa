@@ -24,5 +24,6 @@ Route::delete('admin/user/softdelete/{id}', [UserController::class, 'softdelete'
 Route::resource('level', \App\Http\Controllers\LevelController::class);
 Route::resource('jurusan', \App\Http\Controllers\JurusanController::class);
 Route::resource('gelombang', \App\Http\Controllers\GelombangController::class);
+Route::resource('pic-jurusan', \App\Http\Controllers\PicController::class);
 Route::resource('data-peserta', \App\Http\Controllers\RegisterController::class);
 
