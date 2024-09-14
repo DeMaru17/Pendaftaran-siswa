@@ -10,6 +10,9 @@ class LoginController extends Controller
 {
     public function index()
     {
+        $title = 'Log out!';
+        $text = "Are you sure you want to logout?";
+        confirmDelete($title, $text);
         return view('login');
     }
 

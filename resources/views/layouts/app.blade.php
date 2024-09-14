@@ -18,8 +18,8 @@
   <link rel="stylesheet" href="{{asset('dist/assets/compiled/css/iconly.css')}}">
   <link rel="stylesheet" href="{{asset('dist/assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css')}}">
   <link rel="stylesheet" href="{{asset('dist/assets/compiled/css/table-datatable-jquery.css')}}">
-  
-  
+
+
 </head>
 
 <body>
@@ -63,6 +63,7 @@
 <script src="{{asset('dist/assets/extensions/datatables.net/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('dist/assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js')}}"></script>
 <script src="{{asset('dist/assets/static/js/pages/datatables.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
 
 </body>
 

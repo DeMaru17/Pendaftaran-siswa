@@ -17,6 +17,7 @@ Route::post('pendaftaran', [\App\Http\Controllers\RegisterController::class, 'st
 // Login routes
 Route::get('login', [\App\Http\Controllers\LoginController::class, 'index'])->name('login');
 Route::post('action-login', [\App\Http\Controllers\LoginController::class, 'actionLogin'])->name('action-login');
+Route::get('logout', [\App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
 
 Route::resource('user', \App\Http\Controllers\UserController::class);
 Route::delete('admin/user/softdelete/{id}', [UserController::class, 'softdelete'])->name('user.softDelete');

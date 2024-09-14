@@ -32,7 +32,7 @@ class PicController extends Controller
      */
     public function create()
     {
-        $user = User::with('jurusans')->where('id_level','7')->whereNull('deleted_at')->get();
+        $user = User::with('jurusans')->whereIn('id_level', [7, 8])->whereNull('deleted_at')->get();
         $jurusans = Jurusan::whereNull('deleted_at')->get();
         return view('admin.pic-jurusan.create', compact('user','jurusans'));
     }

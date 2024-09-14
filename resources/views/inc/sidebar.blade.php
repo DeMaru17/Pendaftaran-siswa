@@ -65,7 +65,7 @@
         </li>
 
         <li
-            class="sidebar-item has-sub {{ in_array(Route::currentRouteName(), ['user.index', 'level.index', 'jurusan.index', 'gelombang.index']) ? 'active' : '' }}  ">
+            class="sidebar-item has-sub {{ in_array(Route::currentRouteName(), ['user.index', 'pic-jurusan.index', 'level.index', 'jurusan.index', 'gelombang.index']) ? 'active' : '' }}  ">
             <a href="#" class='sidebar-link'>
                 <i class="bi bi-stack"></i>
                 <span>Master Data</span>
@@ -101,6 +101,15 @@
 
 
             </ul>
+            @if (Auth::check())
+            <li
+            class="sidebar-item" >
+            <a href="{{ route('logout') }}" class="sidebar-link" onclick="confirmLogout(event)">
+                <i class="bi bi-box-arrow-left"></i>
+                <span>Log out</span>
+            </a>
+        </li>
+        @endif
 
 
         </li>
@@ -113,3 +122,22 @@
 </div>
 </div>
     </div>
+
+    <script>
+        function confirmLogout(event) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Apakah anda yakin?',
+                text: 'Anda akan keluar dari akun anda',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Keluar',
+                cancelButtonText: 'Kembali'
+
+            }).then((result) => {
+                if (result.value) {
+                    document.location.href = "{{ route('logout') }}";
+                }
+            });
+        }
+    </script>

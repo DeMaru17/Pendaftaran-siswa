@@ -7,6 +7,7 @@ use App\Models\Jurusan;
 use Illuminate\Http\Request;
 use App\Models\Register;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -15,7 +16,36 @@ class RegisterController extends Controller
      */
     public function index()
     {
-        $peserta = Register::with('gelombang', 'jurusan')->orderBy('id', 'desc')->get();
+     // Cek apakah user sedang login
+    if (auth()->check()) {
+        // Ambil user yang sedang login
+        $user = auth()->user();
+
+        // Jika user yang login adalah PIC
+        if ($user->level->nama_level == 'PIC') {
+            // Ambil semua jurusan yang terkait dengan PIC yang sedang login
+            $jurusanIds = $user->jurusans->pluck('id')->toArray();
+
+            // Tampilkan peserta hanya untuk jurusan yang dimiliki oleh PIC
+            $peserta = Register::whereIn('id_jurusan', $jurusanIds)
+                              ->with('jurusan', 'gelombang')
+                              ->get();
+        } // Jika user yang login adalah Instruktur
+        elseif ($user->level->nama_level == 'Instruktur') {
+            $jurusanIds = $user->jurusans->pluck('id')->toArray();
+            
+            $peserta = Register::whereIn('id_jurusan', $jurusanIds)
+                              ->with('jurusan', 'gelombang')
+                              ->get();
+        }  else {
+            // Jika bukan PIC, ambil semua data peserta
+            $peserta = Register::with('jurusan', 'gelombang')->get();
+        }
+    } else {
+        // Jika user tidak login, ambil semua data peserta
+        $peserta = Register::with('jurusan', 'gelombang')->get();
+    }
+
         return view('admin.peserta.index', compact('peserta'));
     }
 
