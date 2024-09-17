@@ -44,7 +44,7 @@
         .file-input:hover {
         background-color: #3e8e41;
         }
-       
+
 
     </style>
 
@@ -86,10 +86,10 @@
 		                                    <div class="col-sm-5 col-sm-offset-1">
 		                                      <div class="form-group label-floating">
 		                                        	<label class="control-label">Gelombang</label>
-		                                        	<select name="id_gelombang" class="form-control" required>
+		                                        	<select name="id_gelombang" class="form-control" required >
 		                                            	<option disabled="" selected=""></option>
                                                         @foreach ($gelombang as $g)
-		                                            	<option value="{{$g->id}}">{{$g->nama_gelombang}}</option>
+		                                            	<option value="{{$g->id}}" ? selected>{{$g->nama_gelombang}}</option>
                                                         @endforeach
 		                                        	</select>
 		                                    	</div>
