@@ -85,7 +85,7 @@
                     @endif
 
                     {{-- Level Instruktur: Lolos Wawancara --}}
-                    @if(Auth::user()->id_level == '8')
+                    @if(in_array(Auth::user()->id_level, ['8','7']))
                         <option value="3">Lolos Wawancara</option>
                     @endif
 

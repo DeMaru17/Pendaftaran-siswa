@@ -28,3 +28,5 @@ Route::resource('gelombang', \App\Http\Controllers\GelombangController::class);
 Route::resource('pic-jurusan', \App\Http\Controllers\PicController::class);
 Route::resource('data-peserta', \App\Http\Controllers\RegisterController::class);
 
+
+

@@ -46,7 +46,7 @@ class RegisterController extends Controller
                 $jurusanIds = $user->jurusans->pluck('id')->toArray();
 
                 // Tampilkan peserta yang lolos wawancara (status = 3) dan sesuai dengan jurusan PIC
-                $peserta = Register::whereIn('status', [4, 3, 1])
+                $peserta = Register::whereIn('status', [4,  3, 2, 1])
                     ->whereIn('id_jurusan', $jurusanIds)
                     ->with('jurusan', 'gelombang')
                     ->get();
