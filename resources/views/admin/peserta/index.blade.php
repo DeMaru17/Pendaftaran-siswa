@@ -30,10 +30,15 @@
                                     <td>
                                         @if ($p->status == 0)
                                             Belum Diverifikasi
-                                        @elseif ($p->status == 2)
-                                            Lolos Administrasi
                                         @elseif ($p->status == 1)
                                             Tidak Lolos
+                                        @elseif ($p->status == 2)
+                                            Lolos Administrasi
+                                        @elseif ($p->status == 3)
+                                            Lolos Wawancara
+                                        @elseif ($p->status == 4)
+                                            Dinyatakan Lolos
+
                                         @endif
                                     </td>
                                     <td>

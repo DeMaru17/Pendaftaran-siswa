@@ -9,6 +9,7 @@ use App\Models\Register;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Auth;
 
+
 class RegisterController extends Controller
 {
     /**
@@ -16,35 +17,48 @@ class RegisterController extends Controller
      */
     public function index()
     {
-     // Cek apakah user sedang login
-    if (auth()->check()) {
-        // Ambil user yang sedang login
-        $user = auth()->user();
+        // Cek apakah user sedang login
+        if (auth()->check()) {
+            // Ambil user yang sedang login
+            $user = auth()->user();
 
-        // Jika user yang login adalah PIC
-        if ($user->level->nama_level == 'PIC') {
-            // Ambil semua jurusan yang terkait dengan PIC yang sedang login
-            $jurusanIds = $user->jurusans->pluck('id')->toArray();
+            // Jika user yang login adalah Admin
+            if ($user->level->nama_level == 'Admin') {
+                // Tampilkan peserta yang belum diverifikasi (status = 0)
+                $peserta = Register::whereIn('status', [0, 1, 2])
+                    ->with('jurusan', 'gelombang')
+                    ->get();
+            }
+            // Jika user yang login adalah Instruktur
+            elseif ($user->level->nama_level == 'Instruktur') {
+                // Ambil jurusan terkait dengan Instruktur yang sedang login
+                $jurusanIds = $user->jurusans->pluck('id')->toArray();
 
-            // Tampilkan peserta hanya untuk jurusan yang dimiliki oleh PIC
-            $peserta = Register::whereIn('id_jurusan', $jurusanIds)
-                              ->with('jurusan', 'gelombang')
-                              ->get();
-        } // Jika user yang login adalah Instruktur
-        elseif ($user->level->nama_level == 'Instruktur') {
-            $jurusanIds = $user->jurusans->pluck('id')->toArray();
-            
-            $peserta = Register::whereIn('id_jurusan', $jurusanIds)
-                              ->with('jurusan', 'gelombang')
-                              ->get();
-        }  else {
-            // Jika bukan PIC, ambil semua data peserta
+                // Tampilkan peserta yang lolos administrasi (status = 2) dan sesuai dengan jurusan Instruktur
+                $peserta = Register::whereIn('status', [3, 2, 1])
+                    ->whereIn('id_jurusan', $jurusanIds)
+                    ->with('jurusan', 'gelombang')
+                    ->get();
+            }
+            // Jika user yang login adalah PIC
+            elseif ($user->level->nama_level == 'PIC') {
+                // Ambil jurusan terkait dengan PIC yang sedang login
+                $jurusanIds = $user->jurusans->pluck('id')->toArray();
+
+                // Tampilkan peserta yang lolos wawancara (status = 3) dan sesuai dengan jurusan PIC
+                $peserta = Register::whereIn('status', [4, 3, 1])
+                    ->whereIn('id_jurusan', $jurusanIds)
+                    ->with('jurusan', 'gelombang')
+                    ->get();
+            } else {
+                // Jika level user tidak sesuai, ambil semua data peserta
+                $peserta = Register::with('jurusan', 'gelombang')->get();
+            }
+        } else {
+            // Jika user tidak login, ambil semua data peserta
             $peserta = Register::with('jurusan', 'gelombang')->get();
         }
-    } else {
-        // Jika user tidak login, ambil semua data peserta
-        $peserta = Register::with('jurusan', 'gelombang')->get();
-    }
+
 
         return view('admin.peserta.index', compact('peserta'));
     }
@@ -116,7 +130,8 @@ class RegisterController extends Controller
     public function show(string $id)
     {
         $peserta = Register::with('gelombang', 'jurusan')->findOrFail($id);
-        return view('admin.peserta.detail', compact('peserta'));
+        $user = Auth::user();  // Ambil user yang login
+        return view('admin.peserta.detail', compact('peserta', 'user'));
     }
 
     /**

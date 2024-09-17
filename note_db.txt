@@ -38,7 +38,7 @@ pendidikan_terakhir
 nama_sekolah
 kejuruan
 aktivitas_saat_ini
-status (lolos admininistrasi (admin aplikasi), lolos wawancara (instruktur), dinyatakan lolos (PIC), tidak lolos)
+status (lolos admininistrasi value 2 (admin aplikasi), value 3 lolos wawancara (instruktur), value 4 dinyatakan lolos (PIC), value 1 tidak lolos)
 created_at
 updated_at
 deleted_at

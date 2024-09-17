@@ -79,7 +79,7 @@
                 </li>
 
                 <li class="submenu-item  ">
-                    <a href="{{route('pic-jurusan.index')}}" class="submenu-link ">Jurusan PIC</a>
+                    <a href="{{route('pic-jurusan.index')}}" class="submenu-link ">Level Jurusan</a>
 
                 </li>
 

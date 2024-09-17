@@ -78,9 +78,26 @@
                 <label for="status">Status Peserta:</label>
                 <select name="status" id="status" class="form-control">
                     <option value="">Pilih Status</option>
-                    <option value="2">Lolos Administrasi</option>
+
+                    {{-- Level Admin: Lolos Administrasi --}}
+                    @if(Auth::user()->id_level == '6')
+                        <option value="2">Lolos Administrasi</option>
+                    @endif
+
+                    {{-- Level Instruktur: Lolos Wawancara --}}
+                    @if(Auth::user()->id_level == '8')
+                        <option value="3">Lolos Wawancara</option>
+                    @endif
+
+                    {{-- Level PIC: Dinyatakan Lolos --}}
+                    @if(Auth::user()->id_level == '7')
+                        <option value="4">Dinyatakan Lolos</option>
+                    @endif
+
+                    {{-- Semua level bisa melihat Tidak Lolos --}}
                     <option value="1">Tidak Lolos</option>
                 </select>
+
             </div>
 
 
