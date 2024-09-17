@@ -44,15 +44,9 @@
     <ul class="menu">
         <li class="sidebar-title">Menu</li>
 
-        <li
-            class="sidebar-item {{ Route::currentRouteName() == 'dashboard' ? 'active' : '' }}" >
-            <a href="{{route('dashboard')}}" class='sidebar-link'>
-                <i class="bi bi-grid-fill"></i>
-                <span>Dashboard</span>
-            </a>
+        @if(Auth::check())
 
-
-        </li>
+        
 
         <li
             class="sidebar-item {{ Route::currentRouteName() == 'data-peserta.index' ? 'active' : '' }} ">
@@ -101,7 +95,7 @@
 
 
             </ul>
-            @if (Auth::check())
+
             <li
             class="sidebar-item" >
             <a href="{{ route('logout') }}" class="sidebar-link" onclick="confirmLogout(event)">
@@ -109,7 +103,16 @@
                 <span>Log out</span>
             </a>
         </li>
-        @endif
+        @else
+        <!-- Show only dashboard menu item if user is not authenticated -->
+        <li class="sidebar-item active">
+            <a href="{{route('dashboard')}}" class='sidebar-link'>
+                <i class="bi bi-grid-fill"></i>
+                <span>Pendaftaran</span>
+            </a>
+        </li>
+    @endif
+
 
 
         </li>

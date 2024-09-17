@@ -19,14 +19,20 @@ Route::get('login', [\App\Http\Controllers\LoginController::class, 'index'])->na
 Route::post('action-login', [\App\Http\Controllers\LoginController::class, 'actionLogin'])->name('action-login');
 Route::get('logout', [\App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
 
-Route::resource('user', \App\Http\Controllers\UserController::class);
+
 Route::delete('admin/user/softdelete/{id}', [UserController::class, 'softdelete'])->name('user.softDelete');
 
-Route::resource('level', \App\Http\Controllers\LevelController::class);
-Route::resource('jurusan', \App\Http\Controllers\JurusanController::class);
-Route::resource('gelombang', \App\Http\Controllers\GelombangController::class);
-Route::resource('pic-jurusan', \App\Http\Controllers\PicController::class);
+
 Route::resource('data-peserta', \App\Http\Controllers\RegisterController::class);
 
+
+Route::middleware(['checkLevel:5'])->group(function () {
+    Route::resource('user', \App\Http\Controllers\UserController::class);
+    Route::resource('level', \App\Http\Controllers\LevelController::class);
+    Route::resource('jurusan', \App\Http\Controllers\JurusanController::class);
+    Route::resource('gelombang', \App\Http\Controllers\GelombangController::class);
+    Route::resource('pic-jurusan', \App\Http\Controllers\PicController::class);
+
+});
 
 

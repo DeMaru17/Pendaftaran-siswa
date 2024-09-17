@@ -164,4 +164,9 @@ class RegisterController extends Controller
     {
         //
     }
+
+    public function keterangan(Request $request, string $id)
+    {
+        
+    }
 }

@@ -26,7 +26,7 @@ class LoginController extends Controller
         $credential = $request->only(['email', 'password']);
         if (Auth::attempt($credential)) {
             Alert::toast('Login Berhasil','success');
-            return redirect()->intended('dashboard');
+            return redirect()->intended('data-peserta');
         }else{
 
             $error = 'Login gagal. Mohon periksa kembali email dan password anda!';
