@@ -167,6 +167,10 @@ class RegisterController extends Controller
 
     public function keterangan(Request $request, string $id)
     {
-        
+        $peserta = Register::findOrFail($id);
+        $peserta->keterangan = $request->input('keterangan');
+        $peserta->save();
+        Alert::success('Success', 'Berhasil menghubungi peserta');
+        return redirect()->route('data-peserta.index')->with('success', 'Keterangan berhasil diperbarui.');
     }
 }

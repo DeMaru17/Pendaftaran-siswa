@@ -24,6 +24,7 @@ Route::delete('admin/user/softdelete/{id}', [UserController::class, 'softdelete'
 
 
 Route::resource('data-peserta', \App\Http\Controllers\RegisterController::class);
+Route::put('keterangan/{id}', [\App\Http\Controllers\RegisterController::class, 'keterangan'])->name('keterangan');
 
 
 Route::middleware(['checkLevel:5'])->group(function () {
@@ -32,7 +33,4 @@ Route::middleware(['checkLevel:5'])->group(function () {
     Route::resource('jurusan', \App\Http\Controllers\JurusanController::class);
     Route::resource('gelombang', \App\Http\Controllers\GelombangController::class);
     Route::resource('pic-jurusan', \App\Http\Controllers\PicController::class);
-
 });
-
-
