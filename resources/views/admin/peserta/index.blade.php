@@ -40,7 +40,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                    @if ($p->status == 1) 
+                                    @if ($p->status == 1)
                                     -
                                     @elseif ($p->keterangan == 0)
                                     Belum Dihubungi
@@ -55,38 +55,38 @@
                                     <a href="{{route('data-peserta.show',$p->id)}}" class="btn btn-primary btn-sm">Detail</a>
 
                                     @if (Auth::user()->id_level == 7)
-                                            @if ($p->status == 2)
-                                                @php
-                                                $phoneNumber = $p->nomor_hp;
-                                                if (substr($phoneNumber, 0, 2) == '08') {
-                                                    $phoneNumber = '+62' . substr($phoneNumber, 1);
-                                                }
-                                                @endphp
-                                                <form action="{{ route('keterangan', $p->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('PUT')
-                                                    <input type="hidden" name="keterangan" value="1">
-                                                    <button type="submit" class="btn btn-success btn-sm" onclick="window.open('https://wa.me/{{$phoneNumber}}?text=Selamat%20anda%20lolos%20administrasi.%20Silakan%20hadiri%20wawancara', '_blank');">
-                                                        Chat to WhatsApp (Undang Wawancara)
-                                                    </button>
-                                                </form>
-                                            @elseif ($p->status == 3 || $p->status == 4)
-                                                @php
-                                                $phoneNumber = $p->nomor_hp;
-                                                if (substr($phoneNumber, 0, 2) == '08') {
-                                                    $phoneNumber = '+62' . substr($phoneNumber, 1);
-                                                }
-                                                @endphp
-                                                <form action="{{ route('keterangan', $p->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('PUT')
-                                                    <input type="hidden" name="keterangan" value="2">
-                                                    <button type="submit" class="btn btn-success btn-sm" onclick="window.open('https://wa.me/{{$phoneNumber}}?text=Selamat%20anda%20lolos%20seleksi.%20Silakan%20konfirmasi%20keikutsertaan', '_blank');">
-                                                        Chat to WhatsApp (Lolos Seleksi)
-                                                    </button>
-                                                </form>
-                                            @endif
+                                        @if ($p->status == 2)
+                                            @php
+                                            $phoneNumber = $p->nomor_hp;
+                                            if (substr($phoneNumber, 0, 2) == '08') {
+                                                $phoneNumber = '+62' . substr($phoneNumber, 1);
+                                            }
+                                            @endphp
+                                            <form action="{{ route('keterangan', $p->id) }}" method="POST" style="display: inline-block;">
+                                                @csrf
+                                                @method('PUT')
+                                                <input type="hidden" name="keterangan" value="1">
+                                                <button type="submit" class="btn btn-success btn-sm" onclick="window.open('https://wa.me/{{$phoneNumber}}?text=Selamat%20anda%20lolos%20administrasi.%20Silakan%20hadiri%20wawancara', '_blank');">
+                                                    <i class="bi bi-whatsapp"></i> Undang Wawancara
+                                                </button>
+                                            </form>
+                                        @elseif ($p->status == 3 || $p->status == 4)
+                                            @php
+                                            $phoneNumber = $p->nomor_hp;
+                                            if (substr($phoneNumber, 0, 2) == '08') {
+                                                $phoneNumber = '+62' . substr($phoneNumber, 1);
+                                            }
+                                            @endphp
+                                            <form action="{{ route('keterangan', $p->id) }}" method="POST" style="display: inline-block;">
+                                                @csrf
+                                                @method('PUT')
+                                                <input type="hidden" name="keterangan" value="2">
+                                                <button type="submit" class="btn btn-success btn-sm" onclick="window.open('https://wa.me/{{$phoneNumber}}?text=Selamat%20anda%20lolos%20seleksi.%20Silakan%20konfirmasi%20keikutsertaan', '_blank');">
+                                                    <i class="bi bi-whatsapp"></i> Lolos Seleksi
+                                                </button>
+                                            </form>
                                         @endif
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

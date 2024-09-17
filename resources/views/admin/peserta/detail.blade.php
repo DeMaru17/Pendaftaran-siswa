@@ -69,6 +69,22 @@
                     @endif
                 </td>
             </tr>
+            <tr>
+                <th>Status</th>
+                <td>
+                    @if ($peserta->status == 0)
+                        Belum Diverifikasi
+                    @elseif ($peserta->status == 1)
+                        Tidak Lolos
+                    @elseif ($peserta->status == 2)
+                        Lolos Administrasi
+                    @elseif ($peserta->status == 3)
+                        Lolos Wawancara
+                    @elseif ($peserta->status == 4)
+                        Dinyatakan Lolos
+                    @endif
+                </td>
+            </tr>
         </table>
 
         <form action="{{ route('data-peserta.update', $peserta->id) }}" method="POST">
