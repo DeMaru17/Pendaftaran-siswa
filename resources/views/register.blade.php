@@ -86,12 +86,16 @@
 		                                    <div class="col-sm-5 col-sm-offset-1">
 		                                      <div class="form-group label-floating">
 		                                        	<label class="control-label">Gelombang</label>
-		                                        	<select name="id_gelombang" class="form-control" required >
+                                                    @foreach ($gelombang as $g)
+                                                        <input type="text" class="form-control" disabled value="{{$g->nama_gelombang}}">
+                                                        <input type="hidden" name="id_gelombang" value="{{$g->id}}">
+                                                    @endforeach
+		                                        	{{-- <select name="id_gelombang" class="form-control" required >
 		                                            	<option disabled="" selected=""></option>
                                                         @foreach ($gelombang as $g)
 		                                            	<option value="{{$g->id}}" ? selected>{{$g->nama_gelombang}}</option>
                                                         @endforeach
-		                                        	</select>
+		                                        	</select> --}}
 		                                    	</div>
 		                                    </div>
 		                                    <div class="col-sm-5">
